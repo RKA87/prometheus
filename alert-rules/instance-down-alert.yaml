@@ -1,0 +1,14 @@
+groups:
+  - name: ec2-instance-down-alert
+    labels:
+      team: monitoring
+    rules:
+      - alert: InstanceIsDown
+        expr: up != 1
+        for: 2m
+        keep_firing_for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Instance {{ $labels.instance_name }} is down"
+          description: "{{ $labels.instance_name }} has been unreachable for more than 2 minute."
