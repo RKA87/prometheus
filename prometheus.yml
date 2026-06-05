@@ -25,15 +25,18 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
         labels:
-          app: "prometheus-master"
+          instance_name: "prometheus-master"
+          proj: "roboshop"
 
 
   - job_name: "prometheus-member"
     static_configs:
       - targets: ["54.91.70.127:9100"]
         labels:
-          app: "prometheus-member"
+          instance_name: "prometheus-member"
+          proj: "roboshop"
 
+# Dynamic Scrapping configuration
   - job_name: "ec2-service-discovery"
     ec2_sd_configs:
       - region: "us-east-1"
@@ -50,3 +53,5 @@ scrape_configs:
         target_label: az
       - source_labels: [__meta_ec2_private_ip]
         target_label: private_ip
+      - target_label: proj
+        replacement: roboshop
