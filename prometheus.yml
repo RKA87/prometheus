@@ -25,7 +25,7 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-    - targets: ["54.91.70.127:9100"]
+    - targets: ["lcoalhost:9090"]
       # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
       labels:
         app: "prometheus-member-instance"
