@@ -27,8 +27,8 @@ scrape_configs:
           app: "prometheus-master"
 
 
-  - job_name: "prometheus-member-instance-1"
+  - job_name: "prometheus-member"
     static_configs:
       - targets: ["54.91.70.127:9100"]
         labels:
-          app: "prometheus-member-instance-1"
+          app: "prometheus-member"
