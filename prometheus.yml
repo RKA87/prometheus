@@ -21,18 +21,14 @@ rule_files:
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: "prometheus"
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
     static_configs:
-    - targets: ["lcoalhost:9090"]
-      # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
-      labels:
-        app: "prometheus-member-instance"
+      - targets: ["localhost:9090"]
+        labels:
+          app: "prometheus-master"
+
 
   - job_name: "prometheus-member-instance-1"
     static_configs:
       - targets: ["54.91.70.127:9100"]
-       # The label name is added as a label `label_name=<label_value>` to any timeseries scraped from this config.
         labels:
           app: "prometheus-member-instance-1"
